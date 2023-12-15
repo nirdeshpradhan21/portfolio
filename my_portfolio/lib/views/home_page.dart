@@ -1,8 +1,12 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/globals/app_assets.dart';
 import 'package:my_portfolio/globals/constants.dart';
+import 'package:my_portfolio/views/about_me.dart';
+import 'package:my_portfolio/widgets/profile_animation.dart';
 
+import '../globals/app_buttons.dart';
 import '../globals/app_colors.dart';
 import '../globals/app_text_style.dart';
 
@@ -61,103 +65,125 @@ class HomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(
-            top: size.height * 0.3,
-            left: size.width * 0.2,
-            right: size.width * 0.2),
+          top: size.height * 0.05,
+          // left: size.width * 0.1,
+          // right: size.width * 0.1
+        ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  // mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      "Hello It\'s ME",
-                      style: AppTextStyles.monteseratStyle(color: Colors.white),
-                    ),
-                    Constaints.sizedBox(height: 15),
-                    Text(
-                      "Nirdesh Pradhan",
-                      style: AppTextStyles.headingStyles(),
-                    ),
-                    Constaints.sizedBox(height: 15),
-                    Row(children: [
-                      Text(
-                        "And I am a ",
-                        style:
-                            AppTextStyles.monteseratStyle(color: Colors.white),
-                      ),
-                      AnimatedTextKit(
-                        animatedTexts: [
-                          TyperAnimatedText(
-                            "Backend Developer",
-                            textStyle: AppTextStyles.monteseratStyle(
-                                color: Colors.lightBlue),
-                          ),
-                          TyperAnimatedText(
-                            "Learner",
-                            textStyle: AppTextStyles.monteseratStyle(
-                                color: Colors.lightBlue),
-                          ),
-                          // TyperAnimatedText(
-                          //   "Tech Enthusiast",
-                          //   textStyle: AppTextStyles.monteseratStyle(
-                          //       color: Colors.lightBlue),
-                          // )
-                        ],
-                        // pause: const Duration(milliseconds: 1000),
-                        // displayFullTextOnTap: true,
-                        // stopPauseOnTap: true,
-                      )
-                    ]),
-                    Constaints.sizedBox(height: 15),
-                    SizedBox(
-                        width: size.width * 0.5,
+                    FadeInDown(
+                        duration: const Duration(milliseconds: 1200),
                         child: Text(
-                            'asdsadasdasdasdasdasdasdasdasdasdasda'
-                            'asdasdasdasdasdasdasdasdasdasdasdasd'
-                            'asdasdasdasczxcxvddafasedwaqedwqa',
-                            style: AppTextStyles.normalStyle())),
+                          "Hello It\'s ME",
+                          style: AppTextStyles.monteseratStyle(
+                              color: Colors.white),
+                        )),
+                    Constaints.sizedBox(height: 15),
+                    FadeInRight(
+                        duration: const Duration(milliseconds: 1400),
+                        child: Text(
+                          "Nirdesh Pradhan",
+                          style: AppTextStyles.headingStyles(),
+                        )),
+                    Constaints.sizedBox(height: 15),
+                    FadeInLeft(
+                        duration: const Duration(milliseconds: 1400),
+                        child: Row(children: [
+                          Text(
+                            "And I am a ",
+                            style: AppTextStyles.monteseratStyle(
+                                color: Colors.white),
+                          ),
+                          AnimatedTextKit(
+                            animatedTexts: [
+                              TyperAnimatedText(
+                                "Backend Developer",
+                                textStyle: AppTextStyles.monteseratStyle(
+                                    color: Colors.lightBlue),
+                              ),
+                              TyperAnimatedText(
+                                "Learner",
+                                textStyle: AppTextStyles.monteseratStyle(
+                                    color: Colors.lightBlue),
+                              ),
+                              // TyperAnimatedText(
+                              //   "Tech Enthusiast",
+                              //   textStyle: AppTextStyles.monteseratStyle(
+                              //       color: Colors.lightBlue),
+                              // )
+                            ],
+                            // pause: const Duration(milliseconds: 1000),
+                            // displayFullTextOnTap: true,
+                            // stopPauseOnTap: true,
+                          )
+                        ])),
+                    Constaints.sizedBox(height: 15),
+                    FadeInDown(
+                        duration: const Duration(milliseconds: 1600),
+                        child: SizedBox(
+                            width: size.width * 0.5,
+                            child: Text(
+                                'asdsadasdasdasdasdasdasdasdasdasdasda.\n'
+                                'asdasdasdasdasdasdasdasdasdasdasdasd',
+                                style: AppTextStyles.normalStyle()))),
                     Constaints.sizedBox(height: 22),
-                    Row(
-                      children: [
-                        buildSocialButton(asset: AppAssets.github),
-                        Constaints.sizedBox(width: 22),
-                        buildSocialButton(asset: AppAssets.linkedIn),
-                      ],
-                    ),
+                    FadeInUp(
+                        duration: const Duration(milliseconds: 1600),
+                        child: Row(
+                          children: [
+                            buildSocialButton(asset: AppAssets.github),
+                            Constaints.sizedBox(width: 22),
+                            buildSocialButton(asset: AppAssets.linkedIn),
+                          ],
+                        )),
                     Constaints.sizedBox(height: 18),
-                    buildmaterialButton(onTap: (){}),
+                    FadeInUp(
+                        duration: const Duration(milliseconds: 1800),
+                        child: AppButtons.buildmaterialButton(onTap: () {}, buttonName: 'Download CV'),),
                   ],
-                )
+                ),
+                const ProfileAnimation(),
               ],
             ),
+            const SizedBox(
+              height: 350,
+            ),
+      //        Container(
+      //         height: 200,
+      //         child: SizedBox.expand
+      //         (child: Container(
+      //           decoration: BoxDecoration(
+      //           gradient: LinearGradient(
+      //             begin: Alignment.topCenter,
+      //             end: Alignment.bottomCenter,
+      //             colors: <Color>[
+      //               Color.fromARGB(156, 0, 0, 0),
+      //               Color.fromRGBO(35, 45, 63, 1 ),
+      //             ],
+      //             stops: [0.1,1.0],
+      //           ),
+      // ),
+      //         )),
+      //       ),
+            const AboutMe(),
           ],
         ),
       ),
     );
   }
 
-  MaterialButton buildmaterialButton({required VoidCallback onTap,}){
-    return MaterialButton(
-                        color: AppColors.themeColor,
-                        onPressed: onTap,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                        shape: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide.none,
-                        ),
-                        height: 30,
-                        minWidth: 130,
-                        hoverColor: AppColors.bgColor,
-                        splashColor: AppColors.lawgreen,
-                        focusElevation: 12,
-                        child: Text(
-                          'Download CV',
-                          style: AppTextStyles.headerTextStyle(),
-                        ));
-  }
+ 
+
   Ink buildSocialButton({required String asset}) {
     return Ink(
         width: 50,

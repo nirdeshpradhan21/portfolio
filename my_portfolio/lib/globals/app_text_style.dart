@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_portfolio/globals/app_colors.dart';
 
 class AppTextStyles {
   static TextStyle headerTextStyle() {
@@ -18,11 +19,11 @@ class AppTextStyles {
     );
   }
 
-  static TextStyle headingStyles(){
+  static TextStyle headingStyles({double fontSize = 36, Color color = Colors.white }){
     return GoogleFonts.josefinSans(
-      fontSize: 36,
+      fontSize: fontSize,
       fontWeight: FontWeight.bold,
-      color: Colors.grey,
+      color: color,
       letterSpacing: 1,
     );
   }
@@ -32,7 +33,15 @@ class AppTextStyles {
       fontWeight: FontWeight.w500,
       fontSize: 17,
       color: Colors.white,
-      letterSpacing: 1,
+      letterSpacing: 1.5,
+    );
+  }
+
+  static TextStyle ComfortaaStyle(){
+    return GoogleFonts.comfortaa(
+      fontSize: 18,
+      fontWeight: FontWeight.w800,
+      color: AppColors.bgColor,
     );
   }
 }

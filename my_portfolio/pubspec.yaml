@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts:
   animated_text_kit:
+  animate_do:
 
 dev_dependencies:
   flutter_test:
