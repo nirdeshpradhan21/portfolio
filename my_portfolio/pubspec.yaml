@@ -38,7 +38,10 @@ dependencies:
   google_fonts:
   animated_text_kit:
   animate_do:
-
+  scrollable_positioned_list:
+  chewie:
+  video_player:
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

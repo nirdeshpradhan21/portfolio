@@ -2,206 +2,186 @@ import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/globals/app_assets.dart';
+import 'package:my_portfolio/globals/app_buttons.dart';
+import 'package:my_portfolio/globals/app_colors.dart';
+import 'package:my_portfolio/globals/app_text_styles.dart';
 import 'package:my_portfolio/globals/constants.dart';
-import 'package:my_portfolio/views/about_me.dart';
+import 'package:my_portfolio/helper%20class/helper_class.dart';
 import 'package:my_portfolio/widgets/profile_animation.dart';
 
-import '../globals/app_buttons.dart';
-import '../globals/app_colors.dart';
-import '../globals/app_text_style.dart';
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final socialButtons = <String>[
+    AppAssets.facebook,
+    AppAssets.twitter,
+    AppAssets.linkedIn,
+    AppAssets.insta,
+    AppAssets.github,
+  ];
+
+  var socialBI;
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-      appBar: AppBar(
-        backgroundColor: AppColors.bgColor,
-        toolbarHeight: 60,
-        titleSpacing: 90,
-        elevation: 2,
-        title: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text('Portfolio'),
-            Spacer(),
-            Text(
-              'Home',
-              style: AppTextStyles.headerTextStyle(),
-            ),
-            SizedBox(
-              width: 24,
-            ),
-            Text(
-              'About',
-              style: AppTextStyles.headerTextStyle(),
-            ),
-            SizedBox(
-              width: 24,
-            ),
-            Text(
-              'Projects',
-              style: AppTextStyles.headerTextStyle(),
-            ),
-            SizedBox(
-              width: 24,
-            ),
-            Text(
-              'Portfolio',
-              style: AppTextStyles.headerTextStyle(),
-            ),
-            SizedBox(
-              width: 24,
-            ),
-            Text(
-              'Contact',
-              style: AppTextStyles.headerTextStyle(),
-            ),
-          ],
-        ),
+    return HelperClass(
+      mobile: Column(
+        children: [
+          buildHomePersonalInfo(size),
+          Constants.sizedBox(height: 25.0),
+          const ProfileAnimation()
+        ],
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.only(
-          top: size.height * 0.05,
-          // left: size.width * 0.1,
-          // right: size.width * 0.1
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  // mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    FadeInDown(
-                        duration: const Duration(milliseconds: 1200),
-                        child: Text(
-                          "Hello It\'s ME",
-                          style: AppTextStyles.monteseratStyle(
-                              color: Colors.white),
-                        )),
-                    Constaints.sizedBox(height: 15),
-                    FadeInRight(
-                        duration: const Duration(milliseconds: 1400),
-                        child: Text(
-                          "Nirdesh Pradhan",
-                          style: AppTextStyles.headingStyles(),
-                        )),
-                    Constaints.sizedBox(height: 15),
-                    FadeInLeft(
-                        duration: const Duration(milliseconds: 1400),
-                        child: Row(children: [
-                          Text(
-                            "And I am a ",
-                            style: AppTextStyles.monteseratStyle(
-                                color: Colors.white),
-                          ),
-                          AnimatedTextKit(
-                            animatedTexts: [
-                              TyperAnimatedText(
-                                "Backend Developer",
-                                textStyle: AppTextStyles.monteseratStyle(
-                                    color: Colors.lightBlue),
-                              ),
-                              TyperAnimatedText(
-                                "Learner",
-                                textStyle: AppTextStyles.monteseratStyle(
-                                    color: Colors.lightBlue),
-                              ),
-                              // TyperAnimatedText(
-                              //   "Tech Enthusiast",
-                              //   textStyle: AppTextStyles.monteseratStyle(
-                              //       color: Colors.lightBlue),
-                              // )
-                            ],
-                            // pause: const Duration(milliseconds: 1000),
-                            // displayFullTextOnTap: true,
-                            // stopPauseOnTap: true,
-                          )
-                        ])),
-                    Constaints.sizedBox(height: 15),
-                    FadeInDown(
-                        duration: const Duration(milliseconds: 1600),
-                        child: SizedBox(
-                            width: size.width * 0.5,
-                            child: Text(
-                                'asdsadasdasdasdasdasdasdasdasdasdasda.\n'
-                                'asdasdasdasdasdasdasdasdasdasdasdasd',
-                                style: AppTextStyles.normalStyle()))),
-                    Constaints.sizedBox(height: 22),
-                    FadeInUp(
-                        duration: const Duration(milliseconds: 1600),
-                        child: Row(
-                          children: [
-                            buildSocialButton(asset: AppAssets.github),
-                            Constaints.sizedBox(width: 22),
-                            buildSocialButton(asset: AppAssets.linkedIn),
-                          ],
-                        )),
-                    Constaints.sizedBox(height: 18),
-                    FadeInUp(
-                        duration: const Duration(milliseconds: 1800),
-                        child: AppButtons.buildmaterialButton(onTap: () {}, buttonName: 'Download CV'),),
-                  ],
-                ),
-                const ProfileAnimation(),
-              ],
-            ),
-            const SizedBox(
-              height: 350,
-            ),
-      //        Container(
-      //         height: 200,
-      //         child: SizedBox.expand
-      //         (child: Container(
-      //           decoration: BoxDecoration(
-      //           gradient: LinearGradient(
-      //             begin: Alignment.topCenter,
-      //             end: Alignment.bottomCenter,
-      //             colors: <Color>[
-      //               Color.fromARGB(156, 0, 0, 0),
-      //               Color.fromRGBO(35, 45, 63, 1 ),
-      //             ],
-      //             stops: [0.1,1.0],
-      //           ),
-      // ),
-      //         )),
-      //       ),
-            const AboutMe(),
-          ],
-        ),
+      tablet: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Expanded(child: buildHomePersonalInfo(size)),
+          const ProfileAnimation(),
+        ],
       ),
+      desktop: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Expanded(child: buildHomePersonalInfo(size)),
+          const ProfileAnimation(),
+        ],
+      ),
+      paddingWidth: size.width * 0.1,
+      bgColor: Colors.transparent,
     );
   }
 
- 
-
-  Ink buildSocialButton({required String asset}) {
-    return Ink(
-        width: 50,
-        height: 50,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.green, width: 3.0),
-          color: AppColors.bgColor,
-          shape: BoxShape.circle,
-        ),
-        child: InkWell(
-          splashColor: AppColors.lawgreen,
-          hoverColor: Colors.white,
-          child: CircleAvatar(
-            maxRadius: 20,
-            backgroundColor: AppColors.bgColor,
-            child:
-                Image.asset(asset, width: 100, height: 60, fit: BoxFit.contain),
+  Column buildHomePersonalInfo(Size size) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        FadeInDown(
+          duration: const Duration(milliseconds: 1200),
+          child: Text(
+            'Hello, It\'s Me',
+            style: AppTextStyles.montserratStyle(color: Colors.white),
           ),
-        ));
+        ),
+        Constants.sizedBox(height: 15.0),
+        FadeInRight(
+          duration: const Duration(milliseconds: 1400),
+          child: Text(
+            'Mukhtar Ali Khan',
+            style: AppTextStyles.headingStyles(),
+          ),
+        ),
+        Constants.sizedBox(height: 15.0),
+        FadeInLeft(
+          duration: const Duration(milliseconds: 1400),
+          child: Row(
+            children: [
+              Text(
+                'And I\'m a ',
+                style: AppTextStyles.montserratStyle(color: Colors.white),
+              ),
+              AnimatedTextKit(
+                animatedTexts: [
+                  TyperAnimatedText(
+                    'Flutter Developer',
+                    textStyle:
+                        AppTextStyles.montserratStyle(color: Colors.lightBlue),
+                  ),
+                  TyperAnimatedText('Freelancer',
+                      textStyle: AppTextStyles.montserratStyle(
+                          color: Colors.lightBlue)),
+                  TyperAnimatedText('YouTuber',
+                      textStyle: AppTextStyles.montserratStyle(
+                          color: Colors.lightBlue))
+                ],
+                pause: const Duration(milliseconds: 1000),
+                displayFullTextOnTap: true,
+                stopPauseOnTap: true,
+              )
+            ],
+          ),
+        ),
+        Constants.sizedBox(height: 15.0),
+        FadeInDown(
+          duration: const Duration(milliseconds: 1600),
+          child: Expanded(
+            child: Text(
+              'In publishing and graphic design, Lorem ipsum is a placeholder '
+              'text commonly used to demonstrate the visual form of a document'
+              ' or a typeface without relying on meaningful content.',
+              style: AppTextStyles.normalStyle(),
+            ),
+          ),
+        ),
+        Constants.sizedBox(height: 22.0),
+        FadeInUp(
+          duration: const Duration(milliseconds: 1600),
+          child: SizedBox(
+            height: 48,
+            child: ListView.separated(
+              itemCount: socialButtons.length,
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: (context, child) =>
+                  Constants.sizedBox(width: 8.0),
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {},
+                  onHover: (value) {
+                    setState(() {
+                      if (value) {
+                        socialBI = index;
+                      } else {
+                        socialBI = null;
+                      }
+                    });
+                  },
+                  borderRadius: BorderRadius.circular(550.0),
+                  hoverColor: AppColors.themeColor,
+                  splashColor: AppColors.lawGreen,
+                  child: buildSocialButton(
+                      asset: socialButtons[index],
+                      hover: socialBI == index ? true : false),
+                );
+              },
+            ),
+          ),
+        ),
+        Constants.sizedBox(height: 18.0),
+        FadeInUp(
+          duration: const Duration(milliseconds: 1800),
+          child: AppButtons.buildMaterialButton(
+              onTap: () {}, buttonName: 'Download CV'),
+        ),
+      ],
+    );
+  }
+
+  Ink buildSocialButton({required String asset, required bool hover}) {
+    return Ink(
+      width: 45,
+      height: 45,
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.themeColor, width: 2.0),
+        color: AppColors.bgColor,
+        shape: BoxShape.circle,
+      ),
+      padding: const EdgeInsets.all(6),
+      child: Image.asset(
+        asset,
+        width: 10,
+        height: 12,
+        color: hover ? AppColors.bgColor : AppColors.themeColor,
+        // fit: BoxFit.fill,
+      ),
+    );
   }
 }
