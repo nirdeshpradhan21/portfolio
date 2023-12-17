@@ -8,4 +8,6 @@ class AppColors {
   static Color bgColor2 = Color.fromRGBO(41, 44, 53, 1 );
   static Color robinEdgeBlue = const Color(0xff00CCCC);
   static Color white = const Color(0xffffffff);
+  static Color primary = Colors.black;
+  
 }

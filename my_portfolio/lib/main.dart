@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/globals/app_colors.dart';
 import 'package:my_portfolio/views/main_dashboard.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+       
       ),
       home: PageStorage(
         bucket: bucket,

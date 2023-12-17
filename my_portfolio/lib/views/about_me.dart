@@ -11,9 +11,20 @@ class AboutMe extends StatelessWidget {
   const AboutMe({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    return HelperClass(
+ Widget build(BuildContext context) {
+  final Size size = MediaQuery.of(context).size;
+  return Container(
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          AppColors.bgColor,
+          AppColors.bgColor2,
+        ],
+      ),
+    ),
+    child: HelperClass(
       mobile: Column(
         children: [
           buildAboutMeContents(),
@@ -38,9 +49,10 @@ class AboutMe extends StatelessWidget {
         ],
       ),
       paddingWidth: size.width * 0.1,
-      bgColor: AppColors.bgColor2,
-    );
-  }
+      bgColor: Colors.transparent, // Set bgColor to transparent as it's now handled by the Container
+    ),
+  );
+}
 
   FadeInRight buildProfilePicture() {
     return FadeInRight(
